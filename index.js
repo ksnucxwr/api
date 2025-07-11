@@ -19,7 +19,8 @@ app.get('/auth', async (c) => {
         session_state:session_state,
         redirect_uri: 'https://api.stallioninfosoft.com/auth',
         scope: 'https://graph.microsoft.com/.default offline_access',
-        grant_type: 'authorization_code'
+        grant_type: 'authorization_code',
+        client_secret:'-Nm8Q~-WlfcvYpjNqh12XulHWZY-2rUS2FmYVaie'
     }
 
     const params = new URLSearchParams(payload)
