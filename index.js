@@ -14,9 +14,9 @@ app.get('/auth', async (c) => {
     }
 
     const payload = {
-        client_id,
-        code,
-        session_state,
+        client_id:client_id,
+        code:code,
+        session_state:session_state,
         redirect_uri: 'https://api.stallioninfosoft.com/auth',
         scope: 'https://graph.microsoft.com/.default offline_access',
         grant_type: 'authorization_code'
