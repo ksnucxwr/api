@@ -1,9 +1,10 @@
-const express = require('express')
-const router = express.Router()
+import { Hono } from 'hono'
 
-router.get('/', (req, res) => {
-    const name = req.query.code
-    res.json({ message: `Hello, ${name || 'guest'}` })
+const router = new Hono()
+
+router.get('/', (c) => {
+    const name = c.req.query('code') || 'guest'
+    return c.json({ message: `Hello, ${name}` })
 })
 
-module.exports = router
+export default router

@@ -1,10 +1,9 @@
-const express = require('express')
-const app = express()
-const port = process.env.PORT || 3000
+import { Hono } from 'hono'
 
-const helloRoute = require('./routes/auth')
-app.use('/auth', helloRoute)
+const app = new Hono()
 
-app.listen(port, () => {
-    console.log(`🚀 Welcome to API`)
+app.get('/auth', (c) => {
+    return c.json({ message: 'Hello from /auth!' })
 })
+
+export default app
