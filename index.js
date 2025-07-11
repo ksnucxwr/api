@@ -1,4 +1,4 @@
-import { Hono } from 'hono'
+import {Hono} from 'hono'
 
 const app = new Hono()
 
@@ -12,18 +12,21 @@ app.get('/auth', async (c) => {
         client_id: client_id,
         code: code,
         session_state: session_state,
-        redirect_uri: "https://api.stallioninfosoft.com/auth",
-        scope:"https://graph.microsoft.com/.default offline_access",
+        redirect_uri: 'https://api.stallioninfosoft.com/auth',
+        scope: 'https://graph.microsoft.com/.default offline_access',
+        grant_type: 'authorization_code'
     }
+
+    const params = new URLSearchParams(payload)
+
     const res = await fetch('https://login.microsoftonline.com/common/oauth2/v2.0/token', {
         method: 'POST',
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/x-www-form-urlencoded'
         },
-        body: JSON.stringify(payload)
+        body: params.toString()
     })
-
-    return c.json(res.json)
+    return await res.json()
 })
 
 export default app
