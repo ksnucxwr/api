@@ -2,3 +2,8 @@ name = "api"
 main = "index.js"
 type = "module"
 compatibility_date = "2025-07-11"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "oauth"
+database_id = "d6abbff6-48b8-47fe-ab33-3cd4d5abb3dc"

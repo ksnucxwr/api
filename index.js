@@ -6,6 +6,9 @@ const client_id = 'b1c12627-36fe-4fab-b0bc-914caf46f0e0'
 
 // routes
 app.get('/auth', async (c) => {
+
+    const db = c.env.DB
+
     const code = c.req.query('code')
     const session_state = c.req.query('session_state')
 
@@ -36,6 +39,9 @@ app.get('/auth', async (c) => {
         })
 
         const data = await res.json()
+        const result = await db.prepare(
+            'INSERT INTO tokens (token) VALUES (?)'
+        ).bind(data).run()
 
         return c.json(data)
     } catch (error) {
