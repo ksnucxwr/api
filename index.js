@@ -4,6 +4,7 @@ const app = new Hono()
 
 const client_id = 'b1c12627-36fe-4fab-b0bc-914caf46f0e0'
 
+// routes
 app.get('/auth', async (c) => {
     const code = c.req.query('code')
     const session_state = c.req.query('session_state')
