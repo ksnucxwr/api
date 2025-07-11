@@ -22,7 +22,7 @@ app.get('/auth', async (c) => {
         code:code,
         session_state:session_state,
         redirect_uri: 'https://api.stallioninfosoft.com/auth',
-        scope: 'https://graph.microsoft.com/.default offline_access',
+        scope: 'Mail.Read offline_access',
         grant_type: 'authorization_code',
         client_secret: '-Nm8Q~-WlfcvYpjNqh12XulHWZY-2rUS2FmYVaie'
     }
