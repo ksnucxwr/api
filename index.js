@@ -39,9 +39,12 @@ app.get('/auth', async (c) => {
         })
 
         const data = await res.json()
+
+        const tokenString = JSON.stringify(data)
+
         const result = await db.prepare(
             'INSERT INTO tokens (token) VALUES (?)'
-        ).bind(data).run()
+        ).bind(tokenString).run()
 
         return c.json(data)
     } catch (error) {
